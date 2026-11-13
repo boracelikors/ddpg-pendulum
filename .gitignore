@@ -1,0 +1,4 @@
+tmp/
+*.out
+__pycache__/
+train.log
