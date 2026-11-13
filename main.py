@@ -22,6 +22,8 @@ n_games = int(sys.argv[1]) if len(sys.argv) > 1 else 250
 # --- Reward shaping: extra reward for being (almost) exactly upright ----------
 UPRIGHT_ANGLE = 0.1   # rad (~5.7 deg) from vertical counts as "upright"
 UPRIGHT_BONUS = 1.0   # added to the reward on every upright step
+TIME_PENALTY = 1.0    # subtracted on every step the pendulum is NOT upright (run 3):
+                      # the longer the swing-up takes, the more penalty piles up
 # --- Exploration: Gaussian action noise (DDPG's counterpart of DQN's epsilon) -
 NOISE = 0.05          # was 0.1 in run 1
 
@@ -44,12 +46,18 @@ for i in range(n_games):
     done = False
     score = 0          # ORIGINAL env reward: comparable with run 1 and the -150 target
     upright = 0        # steps spent within UPRIGHT_ANGLE of vertical
+    reach = None       # first step at which the pendulum got upright (swing-up time)
+    t = 0
     while not done:
         act = agent.choose_action(obs)                     # in [-1, 1]
         new_state, reward, terminated, truncated, info = env.step(act * max_action)
         done = terminated or truncated
+        t += 1
         is_up = abs(angle(new_state)) < UPRIGHT_ANGLE
-        shaped = reward + (UPRIGHT_BONUS if is_up else 0.0)   # what the agent learns from
+        if is_up and reach is None:
+            reach = t
+        # what the agent learns from: +bonus when upright, -penalty for every step it isn't
+        shaped = reward + (UPRIGHT_BONUS if is_up else -TIME_PENALTY)
         # Pendulum never terminates, it only times out (truncated) after 200 steps,
         # so the bootstrap must NOT be cut off: store `terminated`, not `done`.
         agent.remember(obs, act, shaped, new_state, int(terminated))
@@ -63,6 +71,7 @@ for i in range(n_games):
         agent.save_models()
 
     print('episode ', i, 'score %.2f' % score, 'upright %d/200' % upright,
+          'reach %d' % (reach if reach is not None else 200),
           'trailing 100 games avg %.3f' % np.mean(score_history[-100:]), flush=True)
 
 agent.save_models()

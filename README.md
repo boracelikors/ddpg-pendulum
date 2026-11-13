@@ -43,6 +43,9 @@ See `git log` for the exact diffs. The first commit is the unchanged LunarLander
    vertical instead of at a tilt. The logged `score` stays the **original** env reward so runs are comparable;
    `upright N/200` counts the steps within 5.7°.
 6. **Less exploration (run 2).** Gaussian noise σ 0.1 → 0.05 (DDPG's counterpart of DQN's ε).
+7. **Time penalty (run 3).** `-1` reward on every step the pendulum is *not* upright, so slow swing-ups cost more.
+   Combined with the bonus, the per-step gap between upright and not-upright grows from 1 to 2.
+   `reach N` in the log is the first step at which the pendulum got upright.
 
 ## Running
 
@@ -63,5 +66,6 @@ python3 record_episode.py video tmp/ddpg 0 episode.mp4
 | 2026-11-13 | Random policy baseline | mean -1225 (10 seeds) |
 | 2026-11-13 | DDPG run 1 (noise 0.1, original reward), stopped at ep 209 | 100-ep avg **-143.6**; noise-free eval mean **-147.2**, but only **4%** of steps within 5.7° of vertical: it balances at a steady **9.3° tilt** with constant torque 0.79 (the θ² penalty for 9° is only ~-5/episode). [`results_run1.log`](results_run1.log), [`episode_run1_seed0.mp4`](episode_run1_seed0.mp4) |
 | 2026-11-13 | DDPG run 2: +1 bonus per step within 5.7° of vertical, noise 0.05, 250 episodes | Noise-free eval mean **-131.7** (run 1: -147.2); **85%** of steps upright (run 1: 4%); steady-state angle **0.69°** (run 1: 9.3°). [`results_run2.log`](results_run2.log), [`episode_run2_seed0.mp4`](episode_run2_seed0.mp4) |
+| 2026-11-13 | DDPG run 3: run 2 + `-1` per non-upright step, 250 episodes | *in progress* (run 2 baseline: first upright after **34.2** steps on average, max 53, 20 seeds; run 1: 112.2, never upright in 9/20) |
 
 ![Run 1 vs run 2](results_compare.png)
