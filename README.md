@@ -39,6 +39,10 @@ See `git log` for the exact diffs. The first commit is the unchanged LunarLander
 3. **Correct bootstrapping on timeouts.** Pendulum never terminates, it only gets truncated at 200 steps,
    so the replay buffer stores `terminated` (always 0), not `terminated or truncated`.
 4. Hyperparameters: actor lr 1e-3, critic lr 2e-3, τ = 0.005, batch 64, layers 400/300, γ = 0.99.
+5. **Upright bonus (run 2).** `+1` reward on every step with |θ| < 0.1 rad (5.7°), to make the agent balance exactly
+   vertical instead of at a tilt. The logged `score` stays the **original** env reward so runs are comparable;
+   `upright N/200` counts the steps within 5.7°.
+6. **Less exploration (run 2).** Gaussian noise σ 0.1 → 0.05 (DDPG's counterpart of DQN's ε).
 
 ## Running
 
@@ -57,4 +61,5 @@ python3 record_episode.py video tmp/ddpg 0 episode.mp4
 | Date | Run | Result |
 |---|---|---|
 | 2026-11-13 | Random policy baseline | mean -1225 (10 seeds) |
-| 2026-11-13 | DDPG run 1, 250 episodes, CPU | *in progress* |
+| 2026-11-13 | DDPG run 1 (noise 0.1, original reward), stopped at ep 209 | 100-ep avg **-143.6**; noise-free eval mean **-147.2**, but only **4%** of steps within 5.7° of vertical: it balances at a steady **9.3° tilt** with constant torque 0.79 (the θ² penalty for 9° is only ~-5/episode). [`results_run1.log`](results_run1.log), [`episode_run1_seed0.mp4`](episode_run1_seed0.mp4) |
+| 2026-11-13 | DDPG run 2: +1 bonus per step within 5.7° of vertical, noise 0.05, 250 episodes | *in progress* |

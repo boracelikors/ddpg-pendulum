@@ -36,8 +36,12 @@ def run(env, seed=None, frames=None):
             a = actor(T.tensor(obs, dtype=T.float)).numpy() * MAX_ACTION
         obs, r, term, trunc, _ = env.step(a)
         score += r
+        run.upright += abs(np.arctan2(obs[1], obs[0])) < 0.1
         done = term or trunc
     return score
+
+
+run.upright = 0
 
 
 if mode == 'eval':
@@ -45,7 +49,8 @@ if mode == 'eval':
     n = int(sys.argv[3]) if len(sys.argv) > 3 else 10
     env = gym.make('Pendulum-v1')
     scores = [run(env, s) for s in range(n)]
-    print(ckpt_dir, 'mean %.1f' % np.mean(scores), ' '.join('%.0f' % x for x in scores))
+    print(ckpt_dir, 'mean %.1f' % np.mean(scores), '| upright %.0f%% of steps' % (100 * run.upright / (200 * n)),
+          '|', ' '.join('%.0f' % x for x in scores))
 elif mode == 'video':
     import imageio
     load()
