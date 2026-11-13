@@ -16,7 +16,7 @@ from target_control import make_env, error, task_reward, MAX_TORQUE
 
 T.set_num_threads(1)  # single-sample inference: extra threads only steal CPU from training
 mode = sys.argv[1]
-ckpt_dir = sys.argv[2] if len(sys.argv) > 2 else 'runs/angle45_torque2_default/ckpt'
+ckpt_dir = sys.argv[2] if len(sys.argv) > 2 else 'runs/angle45_torque5_default/ckpt'
 # Old upright scaling: MAX_ACTION = 2.0
 MAX_ACTION = MAX_TORQUE
 

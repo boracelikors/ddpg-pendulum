@@ -4,8 +4,8 @@ import numpy as np
 
 TARGET_ANGLE = np.deg2rad(45.0)
 TOLERANCE = 0.1
-# Previous experiment used MAX_TORQUE = 5.0; outputs are preserved.
-MAX_TORQUE = 2.0
+# Original actuator limit: MAX_TORQUE = 2.0 (see commit 20e9ad2).
+MAX_TORQUE = 5.0
 
 
 def make_env(**kwargs):

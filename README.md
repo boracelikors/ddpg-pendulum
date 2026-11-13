@@ -1,28 +1,40 @@
 # Current task: hold +45° from upright
 
-The active training and evaluation scripts target +45° with the original torque limit ±2.
+The active training and evaluation scripts target +45° with an increased torque limit ±5.
 Holding 45° at zero velocity requires approximately −3.54 Nm in this simulator;
-therefore the ±2 version tests constrained tracking, not a feasible stationary equilibrium.
+therefore ±5 makes stationary balance feasible; ±2 cannot sustain that equilibrium.
 `target_control.py` shares environment settings, wrapped angle error, and reward.
 The reward is `-(error² + 0.1*velocity² + 0.001*torque²)`; bonuses use ±0.1 rad around the target.
 Logs report `near_target`; reaching the band once is not sustained balance.
 
 ```bash
-OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 python3 main.py --episodes 250 --out runs/angle45_torque2_default
-python3 record_episode.py eval runs/angle45_torque2_default/ckpt 20
-python3 record_episode.py live runs/angle45_torque2_default/ckpt
+OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 python3 main.py --episodes 250 --out runs/angle45_torque5_default
+python3 record_episode.py eval runs/angle45_torque5_default/ckpt 20
+python3 record_episode.py live runs/angle45_torque5_default/ckpt
 bash run_all.sh  # nine new runs under runs/angle45/
 python3 compare_seeds.py
 ```
 
-For a single-run dashboard, use `python3 monitor_run.py runs/angle45_torque2_default`.
+For a single-run dashboard, use `python3 monitor_run.py runs/angle45_torque5_default`.
 It displays return, critic loss, Q, target occupancy, first crossing, effort, and final-100-step
 mean absolute angle error, absolute angular speed, and signed mean torque.
 Live Pygame evaluation reloads checkpoints every ten training episodes.
 `upright` in the historical documentation below refers to the original 0° task.
 
-A snapshot of the torque-2 training log is in `results/angle45_torque2/`.
-It is an observation of this experiment, not evidence of sustained 45° balance.
+## Torque comparison versions
+
+- **±2 source version:** commit [`20e9ad2`](https://github.com/boracelikors/ddpg-pendulum/commit/20e9ad2).
+- **±5 source version:** current revision; only the motor authority and output defaults change from the ±2 task.
+- Preserved training logs: [±2](results/angle45_torque2/train.log) and [±5](results/angle45_torque5/train.log).
+- [Final saved ±5 policy, one episode](results/angle45_torque5/episode_seed0.mp4).
+
+The ±5 run was stopped early; its video uses its latest saved checkpoint, not necessarily
+its last logged episode. Logs include exploration, while the video is noise-free.
+These are single-seed observations, not a controlled multi-seed convergence study.
+Both versions use the same +45° reward and network architecture. The historical upright
+experiments below also differ in target and reward, so they do not isolate torque effects.
+Checkpoints remain local and are not included in Git. Existing running Python processes
+retain the settings they imported at startup; this source revision defaults new runs to ±5.
 
 Comparison outputs are `results_angle45_seeds.md/png`. Old checkpoints, logs,
 videos and plots are preserved. `compare_runs.py` still evaluates historical upright

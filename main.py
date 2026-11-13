@@ -27,7 +27,7 @@ p.add_argument('--penalty', type=float, default=1.0, help='reward subtracted on 
 p.add_argument('--noise', type=float, default=0.05, help='Gaussian exploration noise (DDPG counterpart of epsilon)')
 p.add_argument('--seed', type=int, default=0)
 # Old upright default: --out .
-p.add_argument('--out', default='runs/angle45_torque2_default', help='folder for train.log and ckpt/')
+p.add_argument('--out', default='runs/angle45_torque5_default', help='folder for train.log and ckpt/')
 args = p.parse_args()
 
 UPRIGHT_ANGLE = 0.1   # rad (~5.7 deg) from vertical tolerance around the 45-degree target
@@ -43,7 +43,7 @@ log = open(os.path.join(args.out, 'train.log'), 'w')
 
 # Old upright environment: env = gym.make('Pendulum-v1')
 env = make_env()
-max_action = float(env.action_space.high[0])  # 2.0: original actuator limit
+max_action = float(env.action_space.high[0])  # 5.0: increased actuator limit
 
 agent = Agent(alpha=0.001, beta=0.002, input_dims=env.observation_space.shape, tau=0.005,
               env=env, batch_size=64, layer1_size=400, layer2_size=300,
