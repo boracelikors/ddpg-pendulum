@@ -66,6 +66,14 @@ python3 record_episode.py video tmp/ddpg 0 episode.mp4
 | 2026-11-13 | Random policy baseline | mean -1225 (10 seeds) |
 | 2026-11-13 | DDPG run 1 (noise 0.1, original reward), stopped at ep 209 | 100-ep avg **-143.6**; noise-free eval mean **-147.2**, but only **4%** of steps within 5.7° of vertical: it balances at a steady **9.3° tilt** with constant torque 0.79 (the θ² penalty for 9° is only ~-5/episode). [`results_run1.log`](results_run1.log), [`episode_run1_seed0.mp4`](episode_run1_seed0.mp4) |
 | 2026-11-13 | DDPG run 2: +1 bonus per step within 5.7° of vertical, noise 0.05, 250 episodes | Noise-free eval mean **-131.7** (run 1: -147.2); **85%** of steps upright (run 1: 4%); steady-state angle **0.69°** (run 1: 9.3°). [`results_run2.log`](results_run2.log), [`episode_run2_seed0.mp4`](episode_run2_seed0.mp4) |
-| 2026-11-13 | DDPG run 3: run 2 + `-1` per non-upright step, 250 episodes | *in progress* (run 2 baseline: first upright after **34.2** steps on average, max 53, 20 seeds; run 1: 112.2, never upright in 9/20) |
+| 2026-11-13 | DDPG run 3: run 2 + `-1` per non-upright step, 250 episodes | **Learned much faster** (≥150 upright steps by episode ~20 vs ~100 in run 2), but the **final policy ≈ run 2**: first upright after 34.0 steps (run 2: 34.2), 83% upright, score -140.3. Expected: `+1 up / -1 not up` = `2·up − 1`, i.e. a doubled bonus plus a constant that doesn't change the optimal policy; swing-up speed is limited by the max torque. [`results_run3.log`](results_run3.log), [`episode_run3_seed0.mp4`](episode_run3_seed0.mp4) |
 
-![Run 1 vs run 2](results_compare.png)
+**Noise-free comparison, same 20 seeds** (`python3 compare_runs.py run1 run2 run3`):
+
+| Run | Score | Upright | Steps to first upright (mean / max) | Never upright | Steady tilt |
+|---|---|---|---|---|---|
+| 1 | -146.2 | 4% | 40.4 / 64 | 9 of 20 | 9.44° |
+| 2 | **-134.9** | 83% | 34.2 / 53 | 0 | **0.65°** |
+| 3 | -140.3 | 83% | **34.0** / 69 | 0 | 1.62° |
+
+![Run comparison](results_compare.png)
