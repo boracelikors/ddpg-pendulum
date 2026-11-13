@@ -1,0 +1,360 @@
+/home/bora/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+/home/bora/ddpg-pendulum/ddpg_torch.py:246: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  target = T.tensor(target).to(self.critic.device)
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  0 score -1546.76 upright 0/200 trailing 100 games avg -1546.757
+episode  1 score -1285.54 upright 0/200 trailing 100 games avg -1416.147
+episode  2 score -1418.28 upright 0/200 trailing 100 games avg -1416.860
+episode  3 score -1103.46 upright 0/200 trailing 100 games avg -1338.511
+episode  4 score -1693.09 upright 0/200 trailing 100 games avg -1409.426
+episode  5 score -1369.32 upright 8/200 trailing 100 games avg -1402.742
+episode  6 score -1363.82 upright 0/200 trailing 100 games avg -1397.182
+episode  7 score -1104.25 upright 0/200 trailing 100 games avg -1360.565
+episode  8 score -1552.64 upright 6/200 trailing 100 games avg -1381.906
+episode  9 score -1064.21 upright 2/200 trailing 100 games avg -1350.137
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  10 score -1081.18 upright 4/200 trailing 100 games avg -1325.687
+episode  11 score -1145.64 upright 6/200 trailing 100 games avg -1310.683
+episode  12 score -648.41 upright 14/200 trailing 100 games avg -1259.739
+episode  13 score -401.91 upright 0/200 trailing 100 games avg -1198.465
+episode  14 score -261.47 upright 24/200 trailing 100 games avg -1135.999
+episode  15 score -729.99 upright 10/200 trailing 100 games avg -1110.623
+episode  16 score -724.81 upright 0/200 trailing 100 games avg -1087.929
+episode  17 score -272.96 upright 0/200 trailing 100 games avg -1042.652
+episode  18 score -401.12 upright 15/200 trailing 100 games avg -1008.888
+episode  19 score -133.11 upright 0/200 trailing 100 games avg -965.099
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  20 score -142.05 upright 11/200 trailing 100 games avg -925.906
+episode  21 score -533.64 upright 8/200 trailing 100 games avg -908.076
+episode  22 score -331.67 upright 0/200 trailing 100 games avg -883.015
+episode  23 score -144.54 upright 7/200 trailing 100 games avg -852.245
+episode  24 score -255.57 upright 9/200 trailing 100 games avg -828.378
+episode  25 score -127.23 upright 5/200 trailing 100 games avg -801.411
+episode  26 score -255.48 upright 68/200 trailing 100 games avg -781.191
+episode  27 score -134.68 upright 108/200 trailing 100 games avg -758.102
+episode  28 score -274.63 upright 85/200 trailing 100 games avg -741.430
+episode  29 score -125.72 upright 141/200 trailing 100 games avg -720.907
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  30 score -6.20 upright 120/200 trailing 100 games avg -697.852
+episode  31 score -127.77 upright 130/200 trailing 100 games avg -680.036
+episode  32 score -246.14 upright 101/200 trailing 100 games avg -666.888
+episode  33 score -133.75 upright 98/200 trailing 100 games avg -651.208
+episode  34 score -128.71 upright 110/200 trailing 100 games avg -636.279
+episode  35 score -125.45 upright 31/200 trailing 100 games avg -622.089
+episode  36 score -130.80 upright 35/200 trailing 100 games avg -608.811
+episode  37 score -131.27 upright 52/200 trailing 100 games avg -596.245
+episode  38 score -258.28 upright 33/200 trailing 100 games avg -587.579
+episode  39 score -249.74 upright 68/200 trailing 100 games avg -579.133
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  40 score -131.91 upright 44/200 trailing 100 games avg -568.225
+episode  41 score -131.86 upright 34/200 trailing 100 games avg -557.836
+episode  42 score -337.11 upright 0/200 trailing 100 games avg -552.703
+episode  43 score -242.99 upright 0/200 trailing 100 games avg -545.664
+episode  44 score -131.38 upright 0/200 trailing 100 games avg -536.457
+episode  45 score -121.95 upright 0/200 trailing 100 games avg -527.447
+episode  46 score -240.42 upright 69/200 trailing 100 games avg -521.340
+episode  47 score -130.88 upright 61/200 trailing 100 games avg -513.205
+episode  48 score -133.54 upright 0/200 trailing 100 games avg -505.457
+episode  49 score -129.43 upright 18/200 trailing 100 games avg -497.936
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  50 score -6.22 upright 17/200 trailing 100 games avg -488.295
+episode  51 score -2.09 upright 138/200 trailing 100 games avg -478.945
+episode  52 score -244.77 upright 108/200 trailing 100 games avg -474.526
+episode  53 score -121.89 upright 150/200 trailing 100 games avg -467.996
+episode  54 score -230.83 upright 32/200 trailing 100 games avg -463.684
+episode  55 score -387.69 upright 56/200 trailing 100 games avg -462.327
+episode  56 score -341.48 upright 98/200 trailing 100 games avg -460.207
+episode  57 score -126.05 upright 130/200 trailing 100 games avg -454.445
+episode  58 score -228.93 upright 90/200 trailing 100 games avg -450.623
+episode  59 score -124.10 upright 106/200 trailing 100 games avg -445.181
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  60 score -2.18 upright 149/200 trailing 100 games avg -437.919
+episode  61 score -248.36 upright 100/200 trailing 100 games avg -434.861
+episode  62 score -243.32 upright 135/200 trailing 100 games avg -431.821
+episode  63 score -129.83 upright 113/200 trailing 100 games avg -427.103
+episode  64 score -117.18 upright 137/200 trailing 100 games avg -422.335
+episode  65 score -241.62 upright 92/200 trailing 100 games avg -419.596
+episode  66 score -119.07 upright 146/200 trailing 100 games avg -415.111
+episode  67 score -126.78 upright 44/200 trailing 100 games avg -410.871
+episode  68 score -125.36 upright 93/200 trailing 100 games avg -406.733
+episode  69 score -130.06 upright 47/200 trailing 100 games avg -402.780
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  70 score -128.82 upright 79/200 trailing 100 games avg -398.922
+episode  71 score -130.13 upright 99/200 trailing 100 games avg -395.189
+episode  72 score -3.31 upright 101/200 trailing 100 games avg -389.820
+episode  73 score -115.14 upright 138/200 trailing 100 games avg -386.109
+episode  74 score -1.89 upright 144/200 trailing 100 games avg -380.986
+episode  75 score -120.89 upright 164/200 trailing 100 games avg -377.563
+episode  76 score -125.03 upright 159/200 trailing 100 games avg -374.284
+episode  77 score -121.92 upright 149/200 trailing 100 games avg -371.048
+episode  78 score -121.86 upright 159/200 trailing 100 games avg -367.894
+episode  79 score -329.48 upright 125/200 trailing 100 games avg -367.414
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  80 score -127.58 upright 132/200 trailing 100 games avg -364.453
+episode  81 score -121.18 upright 89/200 trailing 100 games avg -361.486
+episode  82 score -2.87 upright 55/200 trailing 100 games avg -357.166
+episode  83 score -243.91 upright 59/200 trailing 100 games avg -355.817
+episode  84 score -1.27 upright 193/200 trailing 100 games avg -351.646
+episode  85 score -124.24 upright 54/200 trailing 100 games avg -349.002
+episode  86 score -126.85 upright 127/200 trailing 100 games avg -346.448
+episode  87 score -119.35 upright 73/200 trailing 100 games avg -343.868
+episode  88 score -127.77 upright 148/200 trailing 100 games avg -341.440
+episode  89 score -122.26 upright 145/200 trailing 100 games avg -339.004
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  90 score -128.35 upright 160/200 trailing 100 games avg -336.689
+episode  91 score -358.25 upright 108/200 trailing 100 games avg -336.924
+episode  92 score -115.31 upright 165/200 trailing 100 games avg -334.541
+episode  93 score -130.91 upright 82/200 trailing 100 games avg -332.375
+episode  94 score -0.91 upright 193/200 trailing 100 games avg -328.885
+episode  95 score -127.82 upright 141/200 trailing 100 games avg -326.791
+episode  96 score -125.78 upright 160/200 trailing 100 games avg -324.719
+episode  97 score -123.14 upright 133/200 trailing 100 games avg -322.662
+episode  98 score -120.07 upright 165/200 trailing 100 games avg -320.615
+episode  99 score -238.59 upright 143/200 trailing 100 games avg -319.795
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  100 score -125.88 upright 158/200 trailing 100 games avg -305.586
+episode  101 score -117.87 upright 134/200 trailing 100 games avg -293.910
+episode  102 score -129.31 upright 115/200 trailing 100 games avg -281.020
+episode  103 score -120.30 upright 115/200 trailing 100 games avg -271.188
+episode  104 score -117.82 upright 155/200 trailing 100 games avg -255.436
+episode  105 score -232.55 upright 154/200 trailing 100 games avg -244.068
+episode  106 score -248.66 upright 148/200 trailing 100 games avg -232.916
+episode  107 score -124.12 upright 165/200 trailing 100 games avg -223.115
+episode  108 score -121.92 upright 164/200 trailing 100 games avg -208.808
+episode  109 score -117.68 upright 165/200 trailing 100 games avg -199.342
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  110 score -246.72 upright 146/200 trailing 100 games avg -190.998
+episode  111 score -1.14 upright 200/200 trailing 100 games avg -179.553
+episode  112 score -128.41 upright 121/200 trailing 100 games avg -174.353
+episode  113 score -117.47 upright 165/200 trailing 100 games avg -171.509
+episode  114 score -339.51 upright 138/200 trailing 100 games avg -172.289
+episode  115 score -249.21 upright 126/200 trailing 100 games avg -167.481
+episode  116 score -243.89 upright 142/200 trailing 100 games avg -162.672
+episode  117 score -344.35 upright 137/200 trailing 100 games avg -163.386
+episode  118 score -245.65 upright 122/200 trailing 100 games avg -161.831
+episode  119 score -129.42 upright 139/200 trailing 100 games avg -161.794
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  120 score -236.52 upright 150/200 trailing 100 games avg -162.739
+episode  121 score -2.16 upright 190/200 trailing 100 games avg -157.424
+episode  122 score -1.79 upright 179/200 trailing 100 games avg -154.125
+episode  123 score -239.84 upright 145/200 trailing 100 games avg -155.078
+episode  124 score -128.75 upright 155/200 trailing 100 games avg -153.810
+episode  125 score -221.82 upright 149/200 trailing 100 games avg -154.756
+episode  126 score -225.13 upright 150/200 trailing 100 games avg -154.452
+episode  127 score -118.61 upright 162/200 trailing 100 games avg -154.292
+episode  128 score -239.10 upright 144/200 trailing 100 games avg -153.936
+episode  129 score -117.28 upright 168/200 trailing 100 games avg -153.852
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  130 score -1.17 upright 192/200 trailing 100 games avg -153.802
+episode  131 score -123.37 upright 165/200 trailing 100 games avg -153.758
+episode  132 score -244.08 upright 141/200 trailing 100 games avg -153.737
+episode  133 score -235.54 upright 148/200 trailing 100 games avg -154.755
+episode  134 score -118.34 upright 169/200 trailing 100 games avg -154.651
+episode  135 score -2.35 upright 150/200 trailing 100 games avg -153.420
+episode  136 score -121.27 upright 167/200 trailing 100 games avg -153.325
+episode  137 score -122.45 upright 163/200 trailing 100 games avg -153.237
+episode  138 score -121.69 upright 173/200 trailing 100 games avg -151.871
+episode  139 score -0.92 upright 200/200 trailing 100 games avg -149.382
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  140 score -236.42 upright 154/200 trailing 100 games avg -150.428
+episode  141 score -254.96 upright 121/200 trailing 100 games avg -151.659
+episode  142 score -3.51 upright 108/200 trailing 100 games avg -148.323
+episode  143 score -117.07 upright 162/200 trailing 100 games avg -147.063
+episode  144 score -244.82 upright 137/200 trailing 100 games avg -148.198
+episode  145 score -125.92 upright 160/200 trailing 100 games avg -148.237
+episode  146 score -244.23 upright 151/200 trailing 100 games avg -148.275
+episode  147 score -125.95 upright 163/200 trailing 100 games avg -148.226
+episode  148 score -1.97 upright 194/200 trailing 100 games avg -146.910
+episode  149 score -246.39 upright 150/200 trailing 100 games avg -148.080
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  150 score -239.96 upright 153/200 trailing 100 games avg -150.417
+episode  151 score -129.43 upright 159/200 trailing 100 games avg -151.691
+episode  152 score -128.32 upright 155/200 trailing 100 games avg -150.526
+episode  153 score -120.04 upright 163/200 trailing 100 games avg -150.508
+episode  154 score -114.20 upright 164/200 trailing 100 games avg -149.341
+episode  155 score -123.90 upright 171/200 trailing 100 games avg -146.703
+episode  156 score -114.53 upright 171/200 trailing 100 games avg -144.434
+episode  157 score -118.14 upright 169/200 trailing 100 games avg -144.355
+episode  158 score -343.40 upright 132/200 trailing 100 games avg -145.500
+episode  159 score -228.26 upright 125/200 trailing 100 games avg -146.541
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  160 score -1.54 upright 200/200 trailing 100 games avg -146.535
+episode  161 score -122.26 upright 166/200 trailing 100 games avg -145.274
+episode  162 score -1.52 upright 200/200 trailing 100 games avg -142.856
+episode  163 score -240.43 upright 146/200 trailing 100 games avg -143.962
+episode  164 score -124.04 upright 163/200 trailing 100 games avg -144.030
+episode  165 score -118.70 upright 165/200 trailing 100 games avg -142.801
+episode  166 score -115.63 upright 165/200 trailing 100 games avg -142.767
+episode  167 score -116.13 upright 166/200 trailing 100 games avg -142.660
+episode  168 score -117.06 upright 168/200 trailing 100 games avg -142.577
+episode  169 score -246.14 upright 147/200 trailing 100 games avg -143.738
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  170 score -237.40 upright 153/200 trailing 100 games avg -144.824
+episode  171 score -381.33 upright 125/200 trailing 100 games avg -147.336
+episode  172 score -114.92 upright 169/200 trailing 100 games avg -148.452
+episode  173 score -125.29 upright 162/200 trailing 100 games avg -148.554
+episode  174 score -120.38 upright 171/200 trailing 100 games avg -149.739
+episode  175 score -114.37 upright 175/200 trailing 100 games avg -149.673
+episode  176 score -1.56 upright 189/200 trailing 100 games avg -148.439
+episode  177 score -119.00 upright 172/200 trailing 100 games avg -148.409
+episode  178 score -245.95 upright 139/200 trailing 100 games avg -149.650
+episode  179 score -117.97 upright 166/200 trailing 100 games avg -147.535
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  180 score -116.70 upright 168/200 trailing 100 games avg -147.426
+episode  181 score -121.81 upright 168/200 trailing 100 games avg -147.433
+episode  182 score -125.26 upright 163/200 trailing 100 games avg -148.657
+episode  183 score -122.89 upright 168/200 trailing 100 games avg -147.446
+episode  184 score -0.48 upright 198/200 trailing 100 games avg -147.438
+episode  185 score -118.67 upright 171/200 trailing 100 games avg -147.383
+episode  186 score -114.52 upright 170/200 trailing 100 games avg -147.259
+episode  187 score -121.62 upright 169/200 trailing 100 games avg -147.282
+episode  188 score -123.45 upright 165/200 trailing 100 games avg -147.239
+episode  189 score -123.61 upright 168/200 trailing 100 games avg -147.252
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  190 score -2.28 upright 187/200 trailing 100 games avg -145.992
+episode  191 score -248.01 upright 148/200 trailing 100 games avg -144.889
+episode  192 score -237.33 upright 147/200 trailing 100 games avg -146.109
+episode  193 score -120.94 upright 168/200 trailing 100 games avg -146.010
+episode  194 score -119.07 upright 167/200 trailing 100 games avg -147.191
+episode  195 score -236.59 upright 149/200 trailing 100 games avg -148.279
+episode  196 score -231.36 upright 148/200 trailing 100 games avg -149.335
+episode  197 score -229.44 upright 151/200 trailing 100 games avg -150.398
+episode  198 score -245.29 upright 147/200 trailing 100 games avg -151.650
+episode  199 score -243.21 upright 149/200 trailing 100 games avg -151.696
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  200 score -1.25 upright 191/200 trailing 100 games avg -150.450
+episode  201 score -1.92 upright 186/200 trailing 100 games avg -149.291
+episode  202 score -227.25 upright 149/200 trailing 100 games avg -150.270
+episode  203 score -129.09 upright 158/200 trailing 100 games avg -150.358
+episode  204 score -122.96 upright 164/200 trailing 100 games avg -150.409
+episode  205 score -127.61 upright 159/200 trailing 100 games avg -149.360
+episode  206 score -229.06 upright 148/200 trailing 100 games avg -149.164
+episode  207 score -249.14 upright 132/200 trailing 100 games avg -150.414
+episode  208 score -115.06 upright 170/200 trailing 100 games avg -150.345
+episode  209 score -117.33 upright 169/200 trailing 100 games avg -150.342
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  210 score -452.26 upright 111/200 trailing 100 games avg -152.397
+episode  211 score -120.31 upright 172/200 trailing 100 games avg -153.589
+episode  212 score -1.85 upright 193/200 trailing 100 games avg -152.323
+episode  213 score -1.94 upright 189/200 trailing 100 games avg -151.168
+episode  214 score -130.00 upright 153/200 trailing 100 games avg -149.073
+episode  215 score -127.39 upright 154/200 trailing 100 games avg -147.855
+episode  216 score -319.62 upright 140/200 trailing 100 games avg -148.612
+episode  217 score -248.03 upright 145/200 trailing 100 games avg -147.649
+episode  218 score -120.02 upright 166/200 trailing 100 games avg -146.393
+episode  219 score -261.47 upright 135/200 trailing 100 games avg -147.713
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  220 score -124.03 upright 160/200 trailing 100 games avg -146.588
+episode  221 score -124.34 upright 164/200 trailing 100 games avg -147.810
+episode  222 score -119.10 upright 168/200 trailing 100 games avg -148.983
+episode  223 score -243.95 upright 142/200 trailing 100 games avg -149.024
+episode  224 score -252.62 upright 147/200 trailing 100 games avg -150.263
+episode  225 score -364.71 upright 118/200 trailing 100 games avg -151.692
+episode  226 score -238.12 upright 149/200 trailing 100 games avg -151.822
+episode  227 score -114.27 upright 167/200 trailing 100 games avg -151.778
+episode  228 score -239.15 upright 153/200 trailing 100 games avg -151.779
+episode  229 score -122.32 upright 167/200 trailing 100 games avg -151.829
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  230 score -116.94 upright 171/200 trailing 100 games avg -152.987
+episode  231 score -122.73 upright 165/200 trailing 100 games avg -152.981
+episode  232 score -1.31 upright 189/200 trailing 100 games avg -150.553
+episode  233 score -122.74 upright 167/200 trailing 100 games avg -149.425
+episode  234 score -119.94 upright 154/200 trailing 100 games avg -149.441
+episode  235 score -122.31 upright 170/200 trailing 100 games avg -150.640
+episode  236 score -239.86 upright 147/200 trailing 100 games avg -151.826
+episode  237 score -117.01 upright 169/200 trailing 100 games avg -151.772
+episode  238 score -237.46 upright 139/200 trailing 100 games avg -152.930
+episode  239 score -2.01 upright 186/200 trailing 100 games avg -152.941
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+episode  240 score -120.75 upright 164/200 trailing 100 games avg -151.784
+episode  241 score -121.90 upright 171/200 trailing 100 games avg -150.453
+episode  242 score -241.57 upright 153/200 trailing 100 games avg -152.834
+episode  243 score -119.45 upright 160/200 trailing 100 games avg -152.858
+episode  244 score -229.94 upright 153/200 trailing 100 games avg -152.709
+episode  245 score -123.98 upright 168/200 trailing 100 games avg -152.689
+episode  246 score -335.42 upright 135/200 trailing 100 games avg -153.601
+episode  247 score -121.55 upright 168/200 trailing 100 games avg -153.557
+episode  248 score -115.58 upright 170/200 trailing 100 games avg -154.693
+episode  249 score -117.88 upright 169/200 trailing 100 games avg -153.408
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+... saving checkpoint ...
+Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.
