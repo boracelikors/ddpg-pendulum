@@ -1,5 +1,23 @@
-tmp/
-*.out
+# Local environments and Python caches
+.venv/
+venv/
 __pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local experiments and checkpoints
+runs/
+ckpt/
+tmp/
 train.log
-runs/*/ckpt/
+*.out
+results_seeds.md
+results_seeds.png
+
+# Ad-hoc recordings (historical videos in results/ remain tracked)
+/*.mp4
+
+!results/angle45_torque2/train.log
+!results/angle45_torque5/train.log
+/results_angle45_seeds.md
+/results_angle45_seeds.png

@@ -1,6 +1,6 @@
 """Noise-free comparison of saved runs on the same 20 seeds, plus learning-curve plot.
 
-  python3 compare_runs.py run1 run2 run3      # models in tmp/<run>, logs in results_<run>.log
+  python3 compare_runs.py run1 run2 run3      # models in tmp/<run>, logs in results/logs/results_<run>.log
 """
 import re
 import sys
@@ -67,7 +67,7 @@ def smooth(x, k=10):
 
 fig, axes = plt.subplots(1, 3, figsize=(18, 5))
 for run in runs:
-    e, s, a, u, r = load(f'results_{run}.log')
+    e, s, a, u, r = load(f'results/logs/results_{run}.log')
     c, lab = COLORS.get(run, None), LABELS.get(run, run)
     axes[0].plot(e, a, color=c, lw=2.5, label=lab)
     if not np.isnan(u).all():
@@ -81,5 +81,5 @@ axes[2].set(title='Steps until first upright (10-ep avg, lower = faster)', xlabe
 for ax in axes:
     ax.grid(alpha=.3); ax.legend(loc='best')
 plt.tight_layout()
-plt.savefig('results_compare.png', dpi=100)
-print('saved results_compare.png')
+plt.savefig('results/plots/results_compare.png', dpi=100)
+print('saved results/plots/results_compare.png')

@@ -1,0 +1,6 @@
+torch
+numpy
+gymnasium[classic-control]
+matplotlib
+imageio
+imageio-ffmpeg
