@@ -180,8 +180,9 @@ class ActorNetwork(nn.Module):
 class Agent(object):
     def __init__(self, alpha, beta, input_dims, tau, env, gamma=0.99,
                  n_actions=2, max_size=1000000, layer1_size=400,
-                 layer2_size=300, batch_size=64):
+                 layer2_size=300, batch_size=64, noise=0.1):
         self.gamma = gamma
+        self.noise_std = noise  # Gaussian exploration noise (as in Phil's Pendulum version)
         self.tau = tau
         self.memory = ReplayBuffer(max_size, input_dims, n_actions)
         self.batch_size = batch_size
@@ -204,14 +205,17 @@ class Agent(object):
 
         self.update_network_parameters(tau=1)
 
-    def choose_action(self, observation):
+    def choose_action(self, observation, evaluate=False):
         self.actor.eval()
         observation = T.tensor(observation, dtype=T.float).to(self.actor.device)
         mu = self.actor.forward(observation).to(self.actor.device)
-        mu_prime = mu + T.tensor(self.noise(),
-                                 dtype=T.float).to(self.actor.device)
+        if not evaluate:
+            mu = mu + T.normal(0.0, self.noise_std, size=mu.shape).to(self.actor.device)
+        # Actions stay normalised to [-1, 1] inside the agent (buffer, critic);
+        # the training loop scales them to the env's torque range.
+        mu = T.clamp(mu, -1.0, 1.0)
         self.actor.train()
-        return mu_prime.cpu().detach().numpy()
+        return mu.cpu().detach().numpy()
 
 
     def remember(self, state, action, reward, new_state, done):
