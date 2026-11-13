@@ -180,8 +180,10 @@ class ActorNetwork(nn.Module):
 class Agent(object):
     def __init__(self, alpha, beta, input_dims, tau, env, gamma=0.99,
                  n_actions=2, max_size=1000000, layer1_size=400,
-                 layer2_size=300, batch_size=64, noise=0.1):
+                 layer2_size=300, batch_size=64, noise=0.1, chkpt_dir='tmp/ddpg'):
         self.gamma = gamma
+        self.last_critic_loss = None  # training diagnostics, read by main.py
+        self.last_q = None
         self.noise_std = noise  # Gaussian exploration noise (as in Phil's Pendulum version)
         self.tau = tau
         self.memory = ReplayBuffer(max_size, input_dims, n_actions)
@@ -189,17 +191,17 @@ class Agent(object):
 
         self.actor = ActorNetwork(alpha, input_dims, layer1_size,
                                   layer2_size, n_actions=n_actions,
-                                  name='Actor')
+                                  name='Actor', chkpt_dir=chkpt_dir)
         self.critic = CriticNetwork(beta, input_dims, layer1_size,
                                     layer2_size, n_actions=n_actions,
-                                    name='Critic')
+                                    name='Critic', chkpt_dir=chkpt_dir)
 
         self.target_actor = ActorNetwork(alpha, input_dims, layer1_size,
                                          layer2_size, n_actions=n_actions,
-                                         name='TargetActor')
+                                         name='TargetActor', chkpt_dir=chkpt_dir)
         self.target_critic = CriticNetwork(beta, input_dims, layer1_size,
                                            layer2_size, n_actions=n_actions,
-                                           name='TargetCritic')
+                                           name='TargetCritic', chkpt_dir=chkpt_dir)
 
         self.noise = OUActionNoise(mu=np.zeros(n_actions))
 
@@ -250,6 +252,8 @@ class Agent(object):
         self.critic.optimizer.zero_grad()
         critic_loss = F.mse_loss(target, critic_value)
         critic_loss.backward()
+        self.last_critic_loss = critic_loss.item()
+        self.last_q = critic_value.mean().item()
         self.critic.optimizer.step()
 
         self.critic.eval()

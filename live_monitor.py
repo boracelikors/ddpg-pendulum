@@ -1,51 +1,54 @@
-"""Live learning curve: re-reads train.log every few seconds and redraws."""
+"""Live learning curves for every run in runs/*/train.log (refreshes every 5 s).
+
+  python3 live_monitor.py
+"""
+import glob
+import os
 import re
 
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.animation import FuncAnimation
 
-LOGS = {
-    'DDPG Pendulum': ('train.log', 'tab:purple'),
-}
-# parses lines like "episode 0 score -295.17 trailing 100 games avg -295.174"
-pat = re.compile(r'episode\s+(\d+)\s+score\s+(-?[\d.]+).*\s(-?[\d.]+)\s*$')
+COLORS = {'A_original': 'tab:blue', 'B_bonus': 'tab:purple', 'C_bonus_penalty': 'tab:red'}
+pat = re.compile(r'episode\s+(\d+)\s+score\s+(-?[\d.]+)\s+upright\s+(\d+)/200\s+reach\s+(\d+)')
 
-fig, ax = plt.subplots(figsize=(10, 5.5))
-fig.canvas.manager.set_window_title('DDPG Pendulum - live training curve')
-
-
-def read(path):
-    eps, scores, avgs = [], [], []
-    try:
-        with open(path) as f:
-            for line in f:
-                m = pat.search(line)
-                if m:
-                    eps.append(int(m[1])); scores.append(float(m[2])); avgs.append(float(m[3]))
-    except FileNotFoundError:
-        pass
-    return eps, scores, avgs
+fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(17, 5))
+fig.canvas.manager.set_window_title('DDPG Pendulum - live training curves')
 
 
 def update(_):
-    ax.clear()
-    titles = []
-    for name, (path, color) in LOGS.items():
-        eps, scores, avgs = read(path)
-        if not eps:
+    for ax in (ax1, ax2, ax3):
+        ax.clear()
+    progress, seen = [], set()
+    for path in sorted(glob.glob('runs/*_s*/train.log')):
+        run = os.path.basename(os.path.dirname(path))
+        cfg = run.rsplit('_s', 1)[0]
+        rows = [tuple(map(float, m.groups())) for m in map(pat.search, open(path)) if m]
+        if not rows:
             continue
-        ax.plot(eps, scores, color=color, alpha=0.15)
-        ax.plot(eps, avgs, color=color, linewidth=2.5, label=f'{name} (100-ep avg)')
-        titles.append(f'{name}: episode {eps[-1]}, avg {avgs[-1]:.0f}')
-    ax.axhline(-200, color='green', linestyle='--', label='Good (-200)')
-    ax.axhline(0, color='gray', linewidth=0.8)
-    ax.set_xlabel('Episode'); ax.set_ylabel('Score')
-    ax.set_title('  |  '.join(titles) or 'waiting...', fontsize=10)
-    ax.set_ylim(-1800, 50)
-    ax.legend(loc='lower right')
-    ax.grid(alpha=0.3)
+        e, s, u, r = map(np.array, zip(*rows))
+        avg = np.array([s[max(0, i - 99):i + 1].mean() for i in range(len(s))])
+        col = COLORS.get(cfg, 'gray')
+        lab = cfg if cfg not in seen else None
+        seen.add(cfg)
+        ax1.plot(e, avg, color=col, lw=1.8, label=lab)
+        if len(u) >= 10:
+            k = np.ones(10) / 10
+            ax2.plot(e[9:], np.convolve(u, k, 'valid'), color=col, lw=1.5, label=lab)
+            ax3.plot(e[9:], np.convolve(r, k, 'valid'), color=col, lw=1.5, label=lab)
+        progress.append(int(e[-1]) + 1)
+    ax1.axhline(-150, color='g', ls='--')
+    ax1.set(title='Score (100-ep avg)', xlabel='Episode', ylim=(-1800, 50))
+    ax2.set(title='Upright steps of 200 (10-ep avg)', xlabel='Episode', ylim=(0, 200))
+    ax3.set(title='Steps until first upright (10-ep avg)', xlabel='Episode', ylim=(0, 200))
+    for ax in (ax1, ax2, ax3):
+        ax.grid(alpha=.3)
+    ax1.legend(loc='lower right')
+    if progress:
+        fig.suptitle(f'{len(progress)} runs  |  episode {min(progress)}-{max(progress)} of 250', fontsize=12)
 
 
 anim = FuncAnimation(fig, update, interval=5000, cache_frame_data=False)
